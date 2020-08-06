@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { questionPropsType } from './../Types/QuizTypes'
 
 
 export const QuestionCard: React.FC<questionPropsType> = ({ question, option, callback }) => {
-    console.log(question, option)
+    
+
+    let [selectedAns, setSelectedAns] = useState('')
+
+    const handleSelection = (e: any)=>{
+        
+        setSelectedAns(e.target.value)
+
+
+    }
 
     return (
+        
         <div className='question-container'>
 
             <div className='question'>
-                {question}
+                <h4>{question}</h4>
 
             </div>
-                <form onSubmit={callback}>
+                <form onSubmit={(e:React.FormEvent<EventTarget>)=>callback(e, selectedAns)}>
                     {
                         option.map((opt: string, ind: number) => {
                             return (
@@ -22,6 +32,9 @@ export const QuestionCard: React.FC<questionPropsType> = ({ question, option, ca
                                         type="radio"
                                         name='opt'
                                         value={opt}
+                                        checked={selectedAns === opt}
+                                        required
+                                        onClick={handleSelection}
                                     />
                                     {opt}
 

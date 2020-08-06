@@ -8,6 +8,7 @@ function App() {
 
   let [quiz, setQuiz] = useState<QuestionType[]>([])
   let [currentStep, setCurrentStep] = useState(0)
+  let [score, setScore] = useState(0)
 
   useEffect(() => {
 
@@ -22,9 +23,26 @@ function App() {
 
   }, [])
 
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+  const handleSubmit = (e: React.FormEvent<EventTarget>, userAns: string) => {
     e.preventDefault();
-    setCurrentStep(++currentStep)
+    console.log(userAns)
+
+    const currentQuestion: QuestionType = quiz[currentStep]
+
+    if (userAns === currentQuestion.answer){
+      console.log('Correct Answer')
+      setScore(++score)
+    }
+
+
+
+    if (currentStep !== quiz.length - 1)
+      setCurrentStep(++currentStep)
+    else {
+    alert(`Your final Score is ${score} out of ${quiz.length} `)
+    setCurrentStep(0);
+    setScore(0)
+    }
 
   }
 
