@@ -1,0 +1,11 @@
+.categories{
+
+    display: flex;
+    align-items: center;
+    
+}
+
+.col{
+align-items: center !important;
+flex-grow: unset !important;
+}

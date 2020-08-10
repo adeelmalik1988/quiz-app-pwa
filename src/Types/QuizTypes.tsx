@@ -16,9 +16,21 @@ export type QuestionType = {
     option: string[]
 }
 
-export type questionPropsType = {
+export type questionCardPropsType = {
     question: string
     option: string[]
-    callback: (e:React.FormEvent<EventTarget>, ans: string)=>void
+    callback: (e: any)=>void
+    userAns: string
+    answer: string
 
+}
+
+export type quizCategoriesProps ={
+    callback: (e:React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export enum category {
+    Sports = 21,
+    Movies = 11,
+    History = 23,
 }
