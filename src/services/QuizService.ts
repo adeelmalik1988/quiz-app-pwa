@@ -9,7 +9,7 @@ export const getQuizDetails = async (totalQues: number, level: string, cat: stri
     const res = await fetch(url)
     let {results} = await res.json()
     //return(results)
-    console.log(url)
+    
 
     const quiz: QuestionType[] = results.map((questionObj: Quiz)=>{
         return{
@@ -22,4 +22,3 @@ export const getQuizDetails = async (totalQues: number, level: string, cat: stri
 
 }
 
-//https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple

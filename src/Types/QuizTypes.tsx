@@ -19,7 +19,7 @@ export type QuestionType = {
 export type questionCardPropsType = {
     question: string
     option: string[]
-    callback: (e: any)=>void
+    callback: (e:React.MouseEvent<HTMLButtonElement>)=>void
     userAns: string
     answer: string
 

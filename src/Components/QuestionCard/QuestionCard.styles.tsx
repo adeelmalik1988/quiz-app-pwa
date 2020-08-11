@@ -22,9 +22,15 @@ type ButtonWrapperProps = {
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     transition: all 0.3s ease;
 
+    :hover {
+        opacity: 0.8;
+      }
+    
+
     Button {
+        cursor: pointer;
         user-select: none;
-        font-size: 0.8rem;
+        font-size: 1rem;
         width: 100%;
         height: 40px;
         margin: 5px 0;

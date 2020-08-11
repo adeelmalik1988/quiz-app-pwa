@@ -4,7 +4,10 @@ import { getQuizDetails } from './services/QuizService'
 import { QuestionType } from './Types/QuizTypes'
 import { QuestionCard } from './Components/QuestionCard/QueestionCard'
 import { QuizCategories } from './Components/QuizCategories/QuizCategories'
-import { Spinner, Button } from 'react-bootstrap';
+import { LoadingPage } from './Components/LoadingPage/Loading'
+import { QuizHeading } from './Components/QuizHeading/QuizHeading'
+import { ResultCard } from './Components/ResultCard/ResultCard'
+import { Alert, Button } from 'react-bootstrap';
 
 function App() {
 
@@ -19,32 +22,33 @@ function App() {
 
   const startGame = async (e: React.MouseEvent<HTMLButtonElement>) => {
     let category: string = e.currentTarget.value
-    console.log(e.currentTarget.value, 'target value')
-    console.log(category, 'category')
-    if (!quiz.length || gameOver) {
+    
+    if (!quiz.length || !gameOver) {
 
       setLoading(true)
     }
     const questions: QuestionType[] = await getQuizDetails(5, 'easy', category)
-    console.log(questions)
+    
     setQuiz(questions)
 
     setStart(true)
     setLoading(false)
     setGameOver(false)
-    
+
 
   }
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(e.currentTarget.value)
+    
+    let clickedAns: string = e.currentTarget.value
+    
     setUserAns(e.currentTarget.value)
-    console.log(userAns, 'userSelected Answer')
+    
 
     const currentQuestion: QuestionType = quiz[currentStep]
 
-    if (userAns === currentQuestion.answer) {
-      console.log('Correct Answer')
+    if (clickedAns === currentQuestion.answer) {
+      
       setScore(++score)
     }
 
@@ -55,22 +59,28 @@ function App() {
     if (currentStep !== quiz.length - 1) {
       setLoading(false)
       setCurrentStep(++currentStep)
+      
       setUserAns('')
 
     } else {
-      alert(`Your final Score is ${score} out of ${quiz.length} `)
-      setCurrentStep(0);
-      setScore(0)
-      setStart(false)
+      
       setGameOver(true)
-      setUserAns('')
     }
   }
 
+  const handleReset = () =>{
+
+    setCurrentStep(0);
+      setScore(0)
+      setStart(false)
+      setGameOver(false)
+      setUserAns('')
+
+  }
 
   return (
     <div className='App'>
-      <h1>Quiz Game</h1>
+      {!start && <QuizHeading />}
 
       {!start && !loading &&
         <QuizCategories
@@ -78,9 +88,15 @@ function App() {
         />
       }
 
-      {loading && <Spinner animation="border" />}
+      {loading && <LoadingPage />}
 
-      {start && <QuestionCard
+    
+      {start && !gameOver && <>
+      
+        <p className='score'>{`Score: ${score}`} </p>
+        <p className='question'>{`Question: ${currentStep + 1} out of ${quiz.length} `}</p>
+      
+      <QuestionCard
         question={quiz[currentStep].question}
         option={quiz[currentStep].option}
         callback={handleSubmit}
@@ -88,10 +104,29 @@ function App() {
         answer={quiz[currentStep].answer}
 
       />
+      </>
       }
-      {userAns &&
-        <Button onClick={handleQuestion} > Next </Button>
+      {userAns && !gameOver &&
+        <button className='subbutton' onClick={handleQuestion} >{(currentStep === quiz.length - 1) ? 'FINISH' : 'NEXT'}</button>
       }
+      {gameOver && 
+      <>
+      <ResultCard />
+
+      <Alert variant={'success'}>
+        
+        <Alert.Heading>{`Your final Score is ${score} out of ${quiz.length}`}</Alert.Heading>
+        
+        <div className="d-flex justify-content-center">
+          <Button onClick={handleReset} variant="outline-success">
+            Let's Play Again
+          </Button>
+        </div>
+      
+        </Alert>
+
+        </>
+}
 
     </div>
   );

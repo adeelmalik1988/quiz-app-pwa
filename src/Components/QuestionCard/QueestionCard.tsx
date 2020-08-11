@@ -2,6 +2,7 @@ import React from 'react'
 import { questionCardPropsType } from '../../Types/QuizTypes'
 import { Card, Container, Row, Button } from 'react-bootstrap'
 import {  ButtonWrapper } from './QuestionCard.styles'
+import './QuestionCard.css'
 
 
 
@@ -14,14 +15,13 @@ export const QuestionCard: React.FC<questionCardPropsType> = ({ question, option
             
             <div className='question-container'>
 
-
                 <Container fluid>
                     <Row className="justify-content-md-center">
-                        <Card style={{ width: '50rem' }} >
+                        <Card className="card" >
 
-                            <Card.Header>Quiz Questions</Card.Header>
+                           
 
-                            <Card.Title>{question}
+                            <Card.Title>
                                 <p dangerouslySetInnerHTML={{ __html: question }} />
                             </Card.Title>
 
@@ -37,7 +37,7 @@ export const QuestionCard: React.FC<questionCardPropsType> = ({ question, option
                                         
                                         >
 
-                                            <Button disabled={userAns ? true : false} value={opt} onClick={(e: any) => callback(e)} >
+                                            <Button disabled={userAns ? true : false} value={opt} onClick={(e:React.MouseEvent<HTMLButtonElement>) => callback(e)} >
                                                 <span
                                                     dangerouslySetInnerHTML={{ __html: opt }} />
 
