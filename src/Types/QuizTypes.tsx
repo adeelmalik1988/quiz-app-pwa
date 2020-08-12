@@ -30,6 +30,7 @@ export type quizCategoriesProps ={
 }
 
 export enum category {
+    GeneralKnowledge = 9,
     Sports = 21,
     Movies = 11,
     History = 23,
