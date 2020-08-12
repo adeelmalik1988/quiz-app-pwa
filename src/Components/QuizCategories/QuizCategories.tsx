@@ -19,10 +19,10 @@ export const QuizCategories:React.FC<quizCategoriesProps> = ( {callback} ) => {
             <Container fluid>
                 <Row className="justify-content-md-center">
                 <Col className={styles.col}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={gk} />
                             <Card.Body>
-                                <Card.Title>General Knowledge</Card.Title>
+                                <Card.Title>G K</Card.Title>
                                 
                                 <Button variant="primary" onClick={(e:React.MouseEvent<HTMLButtonElement>)=>callback(e)} value= {category.GeneralKnowledge}>Let's Start</Button>
                             </Card.Body>
@@ -31,7 +31,7 @@ export const QuizCategories:React.FC<quizCategoriesProps> = ( {callback} ) => {
 
 
                     <Col className={styles.col}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={sports} />
                             <Card.Body>
                                 <Card.Title>Sports</Card.Title>
@@ -41,7 +41,7 @@ export const QuizCategories:React.FC<quizCategoriesProps> = ( {callback} ) => {
                         </Card>
                     </Col>
                     <Col className={styles.col}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={movies} />
                             <Card.Body>
                                 <Card.Title>Movies</Card.Title>
@@ -51,7 +51,7 @@ export const QuizCategories:React.FC<quizCategoriesProps> = ( {callback} ) => {
                         </Card>
                     </Col>
                     <Col className={styles.col}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '15rem' }}>
                             <Card.Img variant="top" src={history} />
                             <Card.Body>
                                 <Card.Title>History</Card.Title>
