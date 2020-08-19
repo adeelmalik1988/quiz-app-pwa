@@ -8,6 +8,7 @@ import { LoadingPage } from './Components/LoadingPage/Loading'
 import { QuizHeading } from './Components/QuizHeading/QuizHeading'
 import { ResultCard } from './Components/ResultCard/ResultCard'
 import { Alert, Button } from 'react-bootstrap';
+import {initNotification} from './services/firebaseService'
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Button onClick={initNotification}>Notification</Button>
       {!start && <QuizHeading />}
 
       {!start && !loading &&
