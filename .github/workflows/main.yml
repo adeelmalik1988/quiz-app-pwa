@@ -37,8 +37,4 @@ jobs:
       run: yarn build
       
     
-    - name: Installing surge
-      run: npm install -g surge
- 
-    - name: Deploying surge
-      run: surge ./build http://quizapp-typescript-adeelmalik.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
+
