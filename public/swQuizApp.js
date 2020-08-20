@@ -3,11 +3,13 @@ console.log('registered')
 
 var CACHE_NAME = 'quiz-web-new'
 var urlsToCache = [
-    '/static/js/bundle.js',
-    '/static/js/0.chunk.js',
-    '/static/js/1.chunk.js',
-    '/static/js/main.chunk.js',
-    '/main.86455816e5f6ef194701.hot-update.js',
+    
+    '/static/js/2.b8453fb6.chunk.js',
+    '/static/js/main.fac0d96c.chunk.js',
+    '/static/css/2.11829350.chunk.css',
+    '/static/css/main.8ee7fde6.chunk.css',
+    '/manifest.json',
+    '/logo192.png',
     "index.html",
     '/static/media/generalKnowledge.739e131a.jpg',
     '/static/media/history.0cca963b.jpg',
