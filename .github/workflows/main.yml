@@ -19,22 +19,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2-beta
-        with:
-          Version: 12
-
-    # Runs a set of commands using the runners shell
-      - name: yarn actions (yaml)
-        uses: sergioramos/yarn-actions@v6
-        with:
-          cmd: install #installing yarn package
-
-      - name: Build with yarn
-        run: yarn build:prod
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build-prod
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
