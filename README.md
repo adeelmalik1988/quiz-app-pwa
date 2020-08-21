@@ -7,6 +7,6 @@ In this responsive React Quiz App, typescript is used instead of javascript to r
 
 ### `Deployed on Surge`
 
-Project is deployed on surge for testing purpose.<br />
+Project is deployed on firebase for testing purpose.<br />
 Open [https://quizapppwa.web.app] to view it in the browser.
 
